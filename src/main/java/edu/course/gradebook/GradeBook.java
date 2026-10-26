@@ -31,7 +31,7 @@ public class GradeBook {
         if (student == null || student.isBlank()) {
             throw new IllegalArgumentException("student name must not be blank");
         }
-        if (score < MIN_SCORE && score > MAX_SCORE) {
+        if (score < MIN_SCORE || score > MAX_SCORE) {
             throw new IllegalArgumentException("score must be between 0 and 100: " + score);
         }
         scoresByStudent.computeIfAbsent(student, name -> new ArrayList<>()).add(score);

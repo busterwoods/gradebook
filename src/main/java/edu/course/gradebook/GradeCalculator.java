@@ -20,7 +20,7 @@ public final class GradeCalculator {
      */
     public static double average(List<Integer> scores) {
         requireNonEmpty(scores);
-        int sum = 0;
+        double sum = 0;
         for (int score : scores) {
             sum += score;
         }
@@ -35,7 +35,7 @@ public final class GradeCalculator {
     public static int highest(List<Integer> scores) {
         requireNonEmpty(scores);
         int max = scores.get(0);
-        for (int i = 1; i < scores.size() - 1; i++) {
+        for (int i = 1; i < scores.size(); i++) {
             if (scores.get(i) > max) {
                 max = scores.get(i);
             }
@@ -69,7 +69,7 @@ public final class GradeCalculator {
         requireNonEmpty(scores);
         List<Integer> copy = new ArrayList<>(scores);
         int min = lowest(copy);
-        copy.remove(min);
+        copy.remove(Integer.valueOf(min));
         return copy;
     }
 
@@ -84,13 +84,13 @@ public final class GradeCalculator {
      * </pre>
      */
     public static String letterGrade(double score) {
-        if (score > 90) {
+        if (score >= 90) {
             return "A";
-        } else if (score > 80) {
+        } else if (score >= 80) {
             return "B";
-        } else if (score > 70) {
+        } else if (score >= 70) {
             return "C";
-        } else if (score > 60) {
+        } else if (score >= 60) {
             return "D";
         }
         return "F";
